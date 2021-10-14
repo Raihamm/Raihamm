@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Raiham Malik Portfolio</title>
+  <!-- This stylesheet will somewhat "normalize" the styling across browsers -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Projects</a></li>
+      <li><a href="../index.html#about">About Me</a></li>
+    </ul>
+  </nav>
+  <header>
+    <div class="container">
+      <h1>
+        Raiham Malik <h2 class=small>(she/her)</h2>
+        </h1>
+      <p class="motto">UW Informatics Student based in Seattle, WA</p>
+    </div>
+  </header>  
+  <main>
+    <section id="menu"> 
+      <div class="container">
+        <h2>Databases and Data Modeling Project</h2>
+        <dl>
+          <dd>
+            <p>
+                Through this exercise, I utilized SQL, NoSQL, and data analysis skills to guide a student through the UW Registration system and how it works. With this Database a student will be able to register for classes, whether they be online or not, and access information about their courses, buildings, and professors                
+            </p>
+            <p>
+                Below is the ERD that represents the database we coded through Azure Data Studio.
+            </p>
+            <a>
+                <img src="img/330.jpg" alt="Database ERD">
+            </a>
+          </dd>
+
+          <dd>
+              <div class="subsection">
+            <h3>
+                Relationships and Possible Queries
+            </h3>
+            <p>
+                Given that registration can depend on many different factors we limited the number of IDs we had. We wanted to be able to answer multiple questions a student might have.
+            </p>
+            <p>
+                For example: What is the oldest building that had an Informatics class in it last year (2019)?
+                This would be answered by querying:
+            </p>
+            <p>Create View OldestBuildingwithInfo as </p><p>(</p>
+            <p>    Select top 1 B.BuildingName, B.YearBuilt
+            </p>
+            <p> from Building as B </p>
+            <p>JOIN Room as R on r.BuildingID = b.buildingID</p>
+            <p>JOIN Class as C on c.RoomID = R.RoomID</p>
+            <p>JOIN Courses as X ON c.CourseID = x.CourseID</p> 
+            <p>    JOIN Quarter as Q on c.QuarterID = q.quarterID
+            </p>
+            <p>    where x.DeptID = 'INFO'
+            </p>
+            <p>
+                and Q.QuarterYear = 2019
+
+            </p>
+            <p>
+                order by B.YearBuilt asc
+
+            </p>
+            <p>);</p>
+            
+            </div>
+          </dd>
+          <dd>
+            <div class="finalsec">
+          <h3>
+              Sources and Script
+          </h3>
+          <p>
+            The database created was modeled after the UW Registration system and its many components. </p>
+            <p>
+                Here is the <a href="Final_Database_Team11-1.txt" target="_blank">code</a> for the project!
+            </p>
+          
+          </div>
+        </dd>
+        </dl>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <p><a href="mailto:raiham@uw.edu"><span class="material-icons">email</span> raiham@uw.edu</a></p>
+      <p> Website designed and coded by <em>Raiham Malik</em></p>
+    </div>
+  </footer>
+
+</body>
+</html>

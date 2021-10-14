@@ -1,0 +1,324 @@
+use Team11_Database;
+
+Create table Class 
+(
+   ClassID varchar(50) primary key,
+   sln int NOT NULL,
+   CourseID varchar(50) references Courses(CourseID) NOT NULL,
+   ProfessorID int references Professor(ProfessorID) NOT NULL,
+   QuarterID int references Quarter(QuarterID) NOT NULL,
+   ClassType VARCHAR(50) NOT NULL,
+   RoomID VARCHAR(50) references Room(RoomID) NOT NULL,
+   MeetingID int references MeetingDays(MeetingID) NOT NULL,
+   ClassSize int NOT NULL
+);
+
+
+CREATE TABLE Professor 
+(
+   ProfessorID int primary key,
+   ProfessorFName varchar(50) NOT NULL,
+   ProfessorLName varchar(50) NOT NULL,
+   DeptID varchar(15) NOT NULL,
+   FOREIGN KEY (DeptID) REFERENCES [Department](DeptID)
+);
+
+
+CREATE TABLE Department 
+(
+   DeptID VARCHAR(15) primary key,
+   DepartmentName VARCHAR(50) NOT NULL
+);
+
+
+CREATE TABLE Quarter 
+(
+   QuarterID int PRIMARY KEY,
+   QuarterName varchar(50) NOT NULL,
+   QuarterYear int NOT NULL
+);
+
+
+CREATE TABLE Student
+(
+   StudentID int primary key,
+   EnrollmentID int NOT NULL,
+   FOREIGN KEY (EnrollmentID) REFERENCES Enrollment(EnrollmentID),
+   NetID varchar(50) NOT NULL,
+   StudentFName text NOT NULL,
+   StudentLName text NOT NULL,
+   CreditsRegistered int NOT NULL
+);
+
+
+Create table MeetingDays 
+(
+   MeetingID int primary key,
+   StartTime Time check (StartTime>= '8:30') NOT NULL,
+   EndTime time check (EndTime<= '22:20') NOT NULL,
+   Monday bit NOT NULL,
+   Tuesday bit NOT NULL,
+   Wednesday bit NOT NULL,
+   Thursday bit NOT NULL,
+   Friday bit NOT NULL
+);
+
+
+Create table Courses
+(
+   CourseID varchar(50) primary key,
+   CourseName varchar(50) NOT NULL,
+   CourseDescr varchar(50),
+   DeptID varchar(50) NOT NULL,
+   foreign key (DeptID) references Department(DeptID),
+   Credits int,
+   Check(Credits >=1 AND Credits IS NOT NULL)
+);
+
+
+CREATE TABLE Building 
+(
+   BuildingID varchar(50) PRIMARY KEY,
+   BuildingName varchar(50) NOT NULL,
+   BuildingLocation varchar(50) NOT NULL,
+   YearBuilt int NOT NULL
+);
+
+
+CREATE TABLE Room 
+(
+   RoomID varchar(50) PRIMARY KEY,
+   BuildingID varchar(50) REFERENCES Building(BuildingID) NOT NULL,
+   SeatingCapacity int NOT NULL
+);
+
+
+CREATE TABLE Quarter 
+(
+   QuarterID int PRIMARY KEY,
+   QuarterName varchar(50) NOT NULL,
+   QuarterYear int NOT NULL,
+);
+
+
+CREATE TABLE Enrollment
+(
+   EnrollmentID int primary key,
+   ClassID varchar(50) NOT NULL,
+   FOREIGN KEY (ClassID) REFERENCES Class(ClassID)
+);
+
+
+INSERT INTO Class values('102', 16273, 'INFO200', 1, 183, 'Lecture', 'AND 223', 164948, 135);
+INSERT INTO Class values('103', 14231, 'INFO402', 2, 194, 'Lecture', 'BAG 221', 298280, 90);
+INSERT INTO Class values('104', 20593, 'INFO330', 3, 201, 'Lecture', 'JHN 102', 453078, 140);
+INSERT INTO Class values('105', 20182, 'INFO300', 6, 201, 'Lecture', 'KNE 210', 756244, 140);
+INSERT INTO Class values('106', 18572, 'STAT221', 10, 201, 'Lecture', 'MLR 110', 696066, 150);
+INSERT INTO Class values('107', 18242, 'PHYS121', 14, 182, 'Lecture', 'RAI 205', 863491, 90);
+INSERT INTO Class values('108', 12734, 'INFO360', 7, 192, 'Quiz', 'SAV 162', 256115, 25);
+INSERT INTO Class values('109', 12736, 'INFO200', 11, 181, 'Lecture', 'ECE 105', 213587, 150);
+INSERT INTO Class values('110', 27346, 'PHYS122', 16, 182, 'Lecture', 'GOW 201', 453078, 100);
+INSERT INTO Class values('111', 21342, 'INFO402', 10, 183, 'Lecture', 'GOW 301', 722079, 140);
+INSERT INTO Class values('112', 24653, 'INFO300', 10, 192, 'Lecture', 'BAG 108', 826048, 100);
+INSERT INTO Class values('113', 11323, 'STAT221', 6, 194, 'Lecture', 'GOW 201', 960282, 100);
+INSERT INTO Class values('114', 57234, 'INFO330', 2, 201, 'Lecture', 'KNE 210', 863491, 160);
+INSERT INTO Class values('115', 12353, 'PHYS121', 1, 192, 'Quiz', 'JHN 022', 455957, 25);
+INSERT INTO Class values('116', 16344, 'PHYS122', 5, 201, 'Lecture', 'DEN 121', 453078, 45);
+INSERT INTO Class values('117', 15735, 'INFO201', 6, 182, 'Lecture', 'DEN 121', 298280, 50);
+INSERT INTO Class values('121', 27342, 'INFO402', 6, 204, 'Lecture', 'Remote', 213587, 50);
+INSERT INTO Class values('118', 28573, 'INFO360', 3, 203, 'Lecture', 'REMOTE', 453078, 40);
+INSERT INTO Class values('119', 23465, 'INFO200', 13, 202, 'Quiz', 'REMOTE', 861383, 30);
+INSERT INTO Class values('120', 17242, 'INFO300', 12, 204, 'Lecture', 'REMOTE', 193593, 50);
+INSERT INTO Class values('122', 20593, 'INFO330', 14, 201, 'Lecture', 'GOW 301', 453078, 140);
+
+INSERT INTO Department VALUES ('INFO', 'Informatics');
+INSERT INTO Department VALUES ('CSE', 'Computer Science');
+INSERT INTO Department VALUES ('COM', 'Communications');
+INSERT INTO Department VALUES ('HCDE', 'Human Centered Design Engineering');
+INSERT INTO Department VALUES ('STAT', 'Statistics');
+ 
+
+INSERT INTO Professor VALUES (1, 'Scott', 'Barker', 'INFO');
+INSERT INTO Professor VALUES (2, 'Micheal', 'Freeman', 'INFO');
+INSERT INTO Professor VALUES (3, 'Joel', 'Ross', 'INFO');
+INSERT INTO Professor VALUES (4, 'Jason', 'Yip', 'INFO');
+INSERT INTO Professor VALUES (5, 'Richard', 'Sturman', 'INFO');
+INSERT INTO Professor VALUES (6, 'Andrew', 'Reifers', 'INFO');
+INSERT INTO Professor VALUES (7,'Jeremy', 'Yip', 'INFO');
+INSERT INTO Professor VALUES (8, 'Kyle', 'Crowder', 'STAT');
+INSERT INTO Professor VALUES (9, 'Youngjun', 'Choe', 'STAT');
+INSERT INTO Professor VALUES (10, 'Matt', 'McGarrity', 'COM');
+INSERT INTO Professor VALUES (11, 'Brett', 'Wortzman', 'CSE');
+INSERT INTO Professor VALUES (12, 'Stuart', 'Reges', 'CSE');
+INSERT INTO Professor VALUES (13, 'Jennifer', 'Turns', 'HCDE');
+INSERT INTO Professor VALUES (14, 'Bill', 'Howe', 'INFO');
+
+INSERT INTO MeetingDays VALUES (696066, '15:30', '17:20', 1, 0, 1, 0, 0);
+INSERT INTO MeetingDays VALUES (826048, '8:30', '10:20', 1, 0, 1, 0, 0);
+INSERT INTO MeetingDays VALUES (213587, '12:30', '13:20', 1, 0, 0, 0, 0);
+INSERT INTO MeetingDays VALUES (298280, '11:30', '12:20', 1, 0, 1, 0, 1);
+INSERT INTO MeetingDays VALUES (455957, '8:30', '9:20', 0, 1, 0, 1, 0);
+INSERT INTO MeetingDays VALUES (193593, '10:30', '12:20', 0, 1, 0, 1, 0);
+INSERT INTO MeetingDays VALUES (513021, '12:30', '13:20', 0, 1, 0, 0, 0);
+INSERT INTO MeetingDays VALUES (461844, '10:30', '12:20', 1, 0, 1, 0, 0);
+INSERT INTO MeetingDays VALUES (960282, '13:30', '14:20', 1, 0, 0, 0, 0);
+INSERT INTO MeetingDays VALUES (398115,'10:30', '11:20', 1, 0, 1, 0, 1);
+INSERT INTO MeetingDays VALUES (164948, '15:30', '16:20', 0, 0, 0, 1, 0);
+INSERT INTO MeetingDays VALUES (722079, '12:30', '13:20', 1, 0, 1, 0, 1);
+INSERT INTO MeetingDays VALUES (256115, '17:30', '18:20', 0, 0, 0, 1, 0);
+INSERT INTO MeetingDays VALUES (863491, '15:30', '17:20', 0, 1, 0, 1, 0);
+INSERT INTO MeetingDays VALUES (453078, '8:30', '10:20', 1, 0, 1, 0, 0);
+INSERT INTO MeetingDays VALUES (861383, '8:30', '10:20', 1, 0, 1, 0, 0);
+
+INSERT INTO Courses VALUES ('INFO330', 'Databases and Data Modeling', 'Learning SQL and utilizing it to investigate data.', 'INFO', 5);
+INSERT INTO Courses VALUES ('INFO402', 'Gender, Race, And Information Technology', 'Analyzing pieces and discussing identity as it affects technology and vice versa', 'INFO',  4);
+INSERT INTO Courses VALUES ('STAT221', 'Statistical Concepts And Methods For The Social Sciences', 'Develops statistical literacy', 'STAT', 5);
+INSERT INTO Courses VALUES ('INFO200', 'Intellectual Foundations Of Informatics', 'Information as an object of study, including theories, concepts, and principles of information, information seeking, cognitive processing, knowledge representation and restructuring, and their relationships to physical and intellectual access to information', 'INFO', 5);
+INSERT INTO Courses VALUES ('INFO201', 'Technical Foundations', 'Introduces fundamental tools and technologies necessary to transform data into knowledge', 'INFO', 5);
+INSERT INTO Courses VALUES ('PHYS121', 'Mechanics', 'Basic principles of mechanics and experiments in mechanics', 'PHYS', 5);
+INSERT INTO Courses VALUES ('PHYS122', 'Electromagnetism', 'Covers the basic principles of electromagnetism and experiments', 'PHYS', 5);
+INSERT INTO Courses VALUES ('INFO360', 'Design Methods', 'Design methods for identifying user needs, devising new design concepts, prototyping these concepts, and evaluating utility and usability.', 'INFO', 4);
+INSERT INTO Courses values('INFO300', 'Research Methods', 'Introduction to the research methods used in informatics for understanding technology, information, and human behavior. Methods incorporate those from design, engineering, and social science. Topics include science and invention, research contribution types, research through design, theory, ethics, and qualitative/quantitative empirical methods.', 'INFO', 5);
+
+INSERT INTO Student VALUES (1676389, 1, 'happy21', 'Maddie', 'Kindle', 15);
+INSERT INTO Student VALUES (1479838, 2, 'hope32', 'Nicole', 'Johnson', 15);
+INSERT INTO Student VALUES (1299043, 3, 'swag99', 'Hannah', 'Kim', 15);
+INSERT INTO Student VALUES (2739443, 4, 'starbucks89', 'Miguel', 'Lee', 15);
+INSERT INTO Student VALUES (1789000, 5, 'tiktokr22', 'Chris', 'Jones', 15);
+INSERT INTO Student VALUES (4389923, 6, 'foodlover44', 'Jay', 'Li', 15);
+INSERT INTO Student VALUES (8399204, 7, 'swim43', 'Jose', 'Palo', 15);
+INSERT INTO Student VALUES (1733938, 8, 'huskies29', 'Rebecca', 'Hut', 15);
+INSERT INTO Student VALUES (1839423, 9, 'dawgs38', 'Emma', 'Keed', 15);
+INSERT INTO Student VALUES (9209332, 10, 'cats78', 'Julia', 'Landon', 15);
+INSERT INTO Student VALUES (3744032, 11, 'dogs998', 'Kayla', 'Sturn', 15);
+INSERT INTO Student VALUES (1678987, 12, 'dolphin2', 'Kenzie', 'Liu', 15);
+
+INSERT INTO Building values('MGH', 'Mary Gates Hall', 'Rainer Vista', 1928);
+INSERT INTO Building values('GOW', 'Gowen Hall', 'Quad', 1932);
+INSERT INTO Building values('KNE', 'Kane Hall', 'Red Square', 1971);
+INSERT INTO Building values('SAV', 'Savery Hall', 'Quad', 1920);
+INSERT INTO Building values('LOW', 'Loew Hall', 'Stevens Way', 1965);
+INSERT INTO Building values('BAG', 'Bagley Hall', 'Rainer Vista', 1908);
+INSERT INTO Building values('JHN', 'Johnson Hall', 'Rainer Vista', 1929);
+INSERT INTO Building values('SIG', 'Sieg Hall', 'Rainier Vista', 1960);
+INSERT INTO Building values('SMI', 'Smith Hall', 'Quad', 1939);
+INSERT INTO Building values('MLR', 'Miller Hall', 'Quad', 1922);
+INSERT INTO Building values('RAI', 'Raitt Hall', 'Quad', 1917);
+INSERT INTO Building values('ECE', 'Electric and Computer Engineering Building', 'Rainer Vista', 2003);
+INSERT INTO Building values('AND', 'Anderson Hall', 'Stevens Way', 1925);
+INSERT INTO Building values('DEN', 'Denny Hall', 'Memorial Way', 1895);
+INSERT INTO Building values('REM', 'Remote', 'Remote', 0);
+
+INSERT INTO Room values('ECE 105', 'ECE', 150);
+INSERT INTO Room values('MGH 076', 'MGH', 25);
+INSERT INTO Room values('MGH 284', 'MGH', 25);
+INSERT INTO Room values('SAV 162', 'SAV', 25);
+INSERT INTO Room values('AND 223', 'AND', 150);
+INSERT INTO Room values('MGH 082', 'MGH', 25);
+INSERT INTO Room values('JHN 102', 'JHN', 150);
+INSERT INTO Room values('SAV 260', 'SAV', 160);
+INSERT INTO Room values('KNE 210', 'KNE', 160);
+INSERT INTO Room values('MGH 389', 'MGH', 160);
+INSERT INTO Room values('SMI 120', 'SMI', 150);
+INSERT INTO Room values('JHN 022', 'JHN', 30);
+INSERT INTO Room values('GOW 301', 'GOW', 150);
+INSERT INTO Room values('GOW 201', 'GOW', 105);
+INSERT INTO Room values('RAI 205', 'RAI', 100);
+INSERT INTO Room values('MLR 110', 'MLR', 150);
+INSERT INTO Room values('SIG 055', 'SIG', 30);
+INSERT INTO Room values('BAG 108', 'BAG', 100);
+INSERT INTO Room values('KNE 130', 'KNE', 700);
+INSERT INTO Room values('RAI 112', 'RAI', 90);
+INSERT INTO Room values('MLR 087', 'MLR', 25);
+INSERT INTO Room values('BAG 221', 'BAG', 90);
+INSERT INTO Room values('DEN 121', 'DEN', 50);
+INSERT INTO Room values('REMOTE', 'REM', 1000);
+
+INSERT INTO Quarter values(181, 'Winter', 2018);
+INSERT INTO Quarter values(182, 'Spring', 2018);
+INSERT INTO Quarter values(183, 'Summer', 2018);
+INSERT INTO Quarter values(184, 'Autumn', 2018);
+INSERT INTO Quarter values(191, 'Winter', 2019);
+INSERT INTO Quarter values(192, 'Spring', 2019);
+INSERT INTO Quarter values(193, 'Summer', 2019);
+INSERT INTO Quarter values(194, 'Autumn', 2019);
+INSERT INTO Quarter values(201, 'Winter', 2020);
+INSERT INTO Quarter values(202, 'Spring', 2020);
+INSERT INTO Quarter values(203, 'Summer', 2020);
+INSERT INTO Quarter values(204, 'Autumn', 2020);
+INSERT INTO Quarter values(211, 'Winter', 2021);
+
+INSERT INTO Enrollment VALUES (1, '102');
+INSERT INTO Enrollment VALUES (2, '103');
+INSERT INTO Enrollment VALUES (3, '104');
+INSERT INTO Enrollment VALUES (4, '105');
+INSERT INTO Enrollment VALUES (5, '106');
+INSERT INTO Enrollment VALUES (6, '107');
+INSERT INTO Enrollment VALUES (7, '108');
+INSERT INTO Enrollment VALUES (8, '109');
+INSERT INTO Enrollment VALUES (9, '111');
+INSERT INTO Enrollment VALUES (10, '112');
+INSERT INTO Enrollment VALUES (11, '113');
+INSERT INTO Enrollment VALUES (12, '114');
+INSERT INTO Enrollment VALUES (13, '115');
+INSERT INTO Enrollment VALUES (14, '116');
+INSERT INTO Enrollment VALUES (15, '117');
+INSERT INTO Enrollment VALUES (16, '118');
+INSERT INTO Enrollment VALUES (17, '119');
+INSERT INTO Enrollment VALUES (18, '120');
+INSERT INTO Enrollment VALUES (19, '121');
+INSERT INTO Enrollment VALUES (20, '122');
+ 
+-- What is the oldest building that had an informatics class in it last year? (Raiham Malik)
+Create View OldestBuildingwithInfo as 
+(
+    Select top 1 B.BuildingName, B.YearBuilt
+    from Building as B
+    JOIN Room as R on r.BuildingID = b.buildingID
+    JOIN Class as C on c.RoomID = R.RoomID
+    JOIN Courses as X ON c.CourseID = x.CourseID 
+    JOIN Quarter as Q on c.QuarterID = q.quarterID
+    where x.DeptID = 'INFO'
+    and Q.QuarterYear = 2019
+    order by B.YearBuilt asc
+);
+
+-- At what time did INFO 360 A (sln 28573) lectures start in Summer 2020? (Jossie Choi)
+CREATE view info360start AS
+(
+   SELECT md.StartTime
+   FROM Class cl
+   JOIN MeetingDays md ON cl.MeetingID = md.MeetingID
+   JOIN Quarter q ON cl.QuarterID = q.QuarterID
+   WHERE cl.sln = 28573
+   AND cl.ClassType = 'Lecture'
+   AND q.QuarterName = 'Summer'
+   AND q.QuarterYear = 2020
+);
+
+-- Which classes will be taught by Bill Howe in Winter 2020? (Raksha Bohra)
+CREATE VIEW ClassByBill as
+(
+   select CourseName
+   from Courses as CO
+   JOIN Class as C on C.CourseID = CO.CourseID
+   JOIN Professor as P on P.ProfessorID= C.ProfessorID
+   JOIN Quarter as Q on Q.QuarterID = C.QuarterID
+   WHERE P.ProfessorFName = 'Bill'
+   AND P.ProfessorLName = 'Howe'
+   AND Q.QuarterName = 'Winter'
+   AND Q.QuarterYear = 2020
+);
+
+-- Which rooms on campus held PHYSICS courses during Spring 2018? (Soraya Marashi)
+CREATE VIEW PhysicsRooms AS
+(
+   SELECT DISTINCT R.RoomID, C.ClassID
+   FROM Room as R
+   JOIN Class as C ON C.RoomID = R.RoomID
+   JOIN Quarter as Q ON Q.QuarterID = C.QuarterID
+   JOIN Courses as CO ON CO.CourseID = C.CourseID
+   WHERE CO.DeptID = 'PHYS'
+   AND Q.QuarterName = 'Spring'
+   AND Q.QuarterYear = 2018
+);
