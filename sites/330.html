@@ -11,8 +11,24 @@
 <body>
   <nav>
     <ul>
-      <li><a href="../index.html">Projects</a></li>
+      <li><a href="../index.html">Home</a></li>
       <li><a href="../index.html#about">About Me</a></li>
+      <li class="dropdown">
+        <button class="dropbtn">Projects
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+        <!-- <p> -->
+          <a href="https://info201group6.shinyapps.io/final-project/" target="_blank">Cost of Living/Minimum Wage Analysis</a>
+        <!-- </p>
+        <p> -->
+          <a href="330.html">University Registration Database</a>
+        <!-- </p>
+        <p> -->
+          <a href="serendipity.html">Gender Transition Tracking App</a>            
+          <a href="node.html">Womxn in STEM Community App</a>        
+        </div>
+      </li>
     </ul>
   </nav>
   <header>
@@ -26,7 +42,10 @@
   <main>
     <section id="menu"> 
       <div class="container">
-        <h2>Databases and Data Modeling Project</h2>
+        
+        <dt>
+          <h2>Databases and Data Modeling Project</h2>
+        </dt>
         <dl>
           <dd>
             <p>
@@ -39,58 +58,61 @@
                 <img src="img/330.jpg" alt="Database ERD">
             </a>
           </dd>
-
-          <dd>
-              <div class="subsection">
-            <h3>
-                Relationships and Possible Queries
-            </h3>
-            <p>
-                Given that registration can depend on many different factors we limited the number of IDs we had. We wanted to be able to answer multiple questions a student might have.
-            </p>
-            <p>
-                For example: What is the oldest building that had an Informatics class in it last year (2019)?
-                This would be answered by querying:
-            </p>
-            <p>Create View OldestBuildingwithInfo as </p><p>(</p>
-            <p>    Select top 1 B.BuildingName, B.YearBuilt
-            </p>
-            <p> from Building as B </p>
-            <p>JOIN Room as R on r.BuildingID = b.buildingID</p>
-            <p>JOIN Class as C on c.RoomID = R.RoomID</p>
-            <p>JOIN Courses as X ON c.CourseID = x.CourseID</p> 
-            <p>    JOIN Quarter as Q on c.QuarterID = q.quarterID
-            </p>
-            <p>    where x.DeptID = 'INFO'
-            </p>
-            <p>
-                and Q.QuarterYear = 2019
-
-            </p>
-            <p>
-                order by B.YearBuilt asc
-
-            </p>
-            <p>);</p>
-            
-            </div>
-          </dd>
-          <dd>
-            <div class="finalsec">
-          <h3>
-              Sources and Script
-          </h3>
-          <p>
-            The database created was modeled after the UW Registration system and its many components. </p>
-            <p>
-                Here is the <a href="Final_Database_Team11-1.txt" target="_blank">code</a> for the project!
-            </p>
-          
-          </div>
-        </dd>
         </dl>
-      </div>
-    </section>
+        </div>
+        </section>
+              <section id="subsection">
+                <div class="container">
+                  <dd>
+                    <h3>
+                      Relationships and Possible Queries
+                  </h3>
+                  <p>
+                      Given that registration can depend on many different factors we limited the number of IDs we had. We wanted to be able to answer multiple questions a student might have.
+                  </p>
+                  <p>
+                      For example: What is the oldest building that had an Informatics class in it last year (2019)?
+                      This would be answered by querying:
+                  </p>
+                  <p>Create View OldestBuildingwithInfo as </p><p>(</p>
+                  <p>    Select top 1 B.BuildingName, B.YearBuilt
+                  </p>
+                  <p> from Building as B </p>
+                  <p>JOIN Room as R on r.BuildingID = b.buildingID</p>
+                  <p>JOIN Class as C on c.RoomID = R.RoomID</p>
+                  <p>JOIN Courses as X ON c.CourseID = x.CourseID</p> 
+                  <p>    JOIN Quarter as Q on c.QuarterID = q.quarterID
+                  </p>
+                  <p>    where x.DeptID = 'INFO'
+                  </p>
+                  <p>
+                      and Q.QuarterYear = 2019
+      
+                  </p>
+                  <p>
+                      order by B.YearBuilt asc
+      
+                  </p>
+                  <p>);</p>
+                  </dd>
+                </div>
+               </section>
+    
+            <section id="finalsec">
+              <div class="container">
+                <dd>
+                <h3>
+                  Sources and Script
+              </h3>
+              <p>
+                The database created was modeled after the UW Registration system and its many components. </p>
+                <p>
+                    Here is the <a href="Final_Database_Team11-1.txt" target="_blank">code</a> for the project!
+                </p>
+                </dd>
+              </div>          
+            </section>
+    <!-- </section> -->
   </main>
   <footer>
     <div class="container">
