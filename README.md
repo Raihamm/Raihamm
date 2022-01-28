@@ -1,5 +1,6 @@
 ### Hi there 👋
-
+## I'm Raiham Malik a UW Informatics Senior and my pronouns are she/her
+# I am currently working on a Data Visualization project
 <!--
 **Raihamm/Raihamm** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
