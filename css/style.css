@@ -1,188 +1,202 @@
 * {
-    box-sizing: border-box;
-} 
- body {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
 }
 main {
-    background-color: #eee2dc;
+  background-color: #eee2dc;
 }
-h1,h2,h3 {
-    font-family:Helvetica, sans-serif;
-    font-weight: 300;
-    margin-top: 0.5rem;
-    margin-bottom: .5rem;
+h1,
+h2,
+h3 {
+  font-family: Helvetica, sans-serif;
+  font-weight: 300;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 h1 {
-    font-size: 3.5rem;
+  font-size: 3.5rem;
 }
 h2 {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 h3 {
-    font-weight: 600;
+  font-weight: 600;
 }
-p, dl{
-    margin-top: 0;
-    margin-bottom: 1rem;
+p,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 .material-icons {
-    position: relative;
-    top: 5px;
+  position: relative;
+  top: 5px;
 }
 .container {
-    max-width: 960px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1rem;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
 }
 nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    color: white;
-    background-color: #edc7b7;
-    padding: .5rem;
-    padding-bottom: 1rem;
-    overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  background-color: #edc7b7;
+  padding: 0.5rem;
+  padding-bottom: 1rem;
+  overflow: hidden;
 }
 nav ul {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 nav li {
-    display: inline;
-    margin: 0 1rem;
+  display: inline;
+  margin: 0 1rem;
 }
-nav a, nav button {
-    color: black;
-    text-decoration: none;
+nav a,
+nav button {
+  color: black;
+  text-decoration: none;
 }
 .dropdown {
-    float: left;
-    overflow: hidden;
-  }
+  float: left;
+  overflow: hidden;
+}
 .dropdown .dropbtn {
-    font-size: 16px;
-    border: none;
-    outline: none;
-    color: black;
-    /* padding: 14px 16px; */
-    background-color: inherit;
-    font-family: inherit; /* Important for vertical align on mobile phones */
-    margin: 0; /* Important for vertical align on mobile phones */
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: black;
+  /* padding: 14px 16px; */
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
 }
 .dropdown-content {
-    display: none;
-    /* position: absolute; */
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  /* Links inside the dropdown */
+  display: none;
+  /* position: absolute; */
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
 .dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    font-size: 14px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  font-size: 14px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
 }
 ul .dropdown {
-    position: fixed;
+  position: fixed;
 }
 nav button {
-    background-color:#edc7b7;
-    border: none;
-    outline: none;
+  background-color: #edc7b7;
+  border: none;
+  outline: none;
 }
 header {
-    color: white;
-    padding-top: 4rem;
-    padding-bottom: 1rem;
-    background-size: cover;
-    background-position: center;
-    background-color: #123c69;
+  color: white;
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+  background-size: cover;
+  background-position: center;
+  background-color: #123c69;
 }
-header .container, header p, header h1, header h2 {
-    background-color: #123c69;
+header .container,
+header p,
+header h1,
+header h2 {
+  background-color: #123c69;
 }
 header p {
-    font-style: italic;
-    font-size: 1.25rem;
-    background-color: #123c69;
+  font-style: italic;
+  font-size: 1.25rem;
+  background-color: #123c69;
 }
 
 #menu dt {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-top: 1rem;
-    text-align: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  text-align: center;
 }
 
 dd {
-    display: flex;
-    flex: 0 1 0;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 0;
+  display: flex;
+  flex: 0 1 0;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0;
 }
 dt p {
-    font-weight: 300;
-    font-size: smaller;
-    
+  font-weight: 300;
+  font-size: smaller;
 }
 dd img {
-    max-height: 200px;
-   
-    margin: .5rem;
-    border-radius: 1px;
-    box-shadow: 0 5px 3px rgba(0,0,0,0.16);
+  max-height: 200px;
+
+  margin: 0.5rem;
+  border-radius: 1px;
+  box-shadow: 0 5px 3px rgba(0, 0, 0, 0.16);
 }
 
 #about {
-    background-color: #edc7b7;
-    line-height: 1.5;
+  background-color: #edc7b7;
+  line-height: 1.5;
 }
 #about .internship {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 footer {
-    color: white;
-    background-color: #ac3b61;
+  color: white;
+  background-color: #ac3b61;
 }
 footer a {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 footer p {
-    margin: 0;
-    line-height: 1.25;
+  margin: 0;
+  line-height: 1.25;
 }
 footer p:last-child {
-    padding-top: 8px;
+  padding-top: 8px;
 }
 nav a:hover {
-    color: #f0f0f0;
-    border-bottom: .8rem solid #f0f0f0; 
-    transition: ease-out 0.25s;
+  color: #f0f0f0;
+  border-bottom: 0.8rem solid #f0f0f0;
+  transition: ease-out 0.25s;
 }
 .dropdown-content a:hover {
-    color: black;
-    background-color: #ddd;
-    border-bottom: none;
-    transition: none;
-  }
-  
-  /* Show the dropdown menu on hover */
+  color: black;
+  background-color: #ddd;
+  border-bottom: none;
+  transition: none;
+}
+
+/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
-    display: block;
-  }
+  display: block;
+}
+a p {
+  text-align: center;
+  text-decoration: none !important;
+  color: black;
+}
+a:hover p {
+  text-decoration: none;
+}
